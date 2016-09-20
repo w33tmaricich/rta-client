@@ -1,14 +1,23 @@
-# clj-rta
+# rta-client
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library designed to assist in RTA Host communication.
 
 ## Usage
 
-FIXME
+In your project.clj:
+
+```
+[com.skyline/rta-client "0.1.0"]
+```
+
+In your namespace:
+```
+(ns my-namespace.core
+  (:require [rta-client.connections :as rta]))
+```
+
+For more detailed information about functions, see the documentation in `/doc`.
 
 ## License
 
-Copyright © 2016 FIXME
-
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Copyright © 2016 Skyline Technology Solutions
