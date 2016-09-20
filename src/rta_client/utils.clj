@@ -13,7 +13,7 @@
         (for [[k v] jhm]
           [(keyword k) v])))
 
-(defn jreq->creq
+(defn jres->cres
   "Converts a java response into a clojure response."
   [data]
   (let [vector-data (arraylist->vector data)]
