@@ -1,4 +1,4 @@
-(defproject w33tmaricich/clj-rta "0.1.0"
+(defproject w33tmaricich/rta-client "0.1.0"
   :description "This is for postgresql communication and RTA."
   :url "http://example.com/FIXME:"
   :license {:name "Eclipse Public License"
