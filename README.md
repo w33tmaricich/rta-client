@@ -7,7 +7,7 @@ A Clojure library designed to assist in RTA Host communication.
 In your project.clj:
 
 ```
-[com.skyline/rta-client "0.1.0"]
+[com.skyline/rta-client "0.1.1"]
 ```
 
 In your namespace:
