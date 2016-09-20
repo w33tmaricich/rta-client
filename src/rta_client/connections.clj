@@ -20,11 +20,11 @@
     (let [client (connect! HOST PORT)
           response (.issueQueryForResponse client s)]
       (.disconnect client)
-      (utils/jreq->creq response))
+      (utils/jres->cres response))
     (catch Exception e (println "ERROR!:" (str "Query failure: " (.getMessage e))))))
 
 (defn table-headers!
-  "Gets the headers of the table"
+  "Returns a set containing keywords of table headers for a given table."
   [t]
   (let [result (quick-query! (str "select * from " t))]
     (if (empty? result)

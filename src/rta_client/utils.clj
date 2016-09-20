@@ -14,7 +14,7 @@
           [(keyword k) v])))
 
 (defn jreq->creq
-  "Converts java data structures to clojure data structures."
+  "Converts a java response into a clojure response."
   [data]
   (let [vector-data (arraylist->vector data)]
     (map jhashmap->hashmap vector-data)))

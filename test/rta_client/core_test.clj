@@ -1,7 +1,7 @@
 (ns rta-client.core-test
   (:require [clojure.test :refer :all]
             [rta-client.globals :refer :all]
-            [rta-client.strings :as s]
+            [rta-client.generate :as gen]
             [rta-client.utils :as utils]))
 
 (deftest globals-set
@@ -21,9 +21,42 @@
            (java.util.ArrayList. [(java.util.HashMap. {:one 1 :two 2})])))))
 
 (deftest query-string-generation-functions
-  (testing "Converting a keymap to a string."
+  (testing "Converting a keymap to a csv string."
     (is (= "one,two"
-           (s/hashmap->keystring {:one 1 :two 2})))))
+           (gen/key-val-csv :key {:one 1 :two 2})))
+    (is (= "'1','2'"
+           (gen/key-val-csv :val {:one 1 :two 2}))))
+  (testing "Converting a keymap to an key=value string."
+    (is (= "one='1',two='2'"
+           (gen/key-val-equ {:one 1 :two 2} ","))))
+  (testing "Generation of an insert query."
+    (is (= "INSERT INTO Table (one,two,Commit) VALUES ('1','2','1');"
+           (gen/insert-query "Table" {:one 1 :two 2 :Commit 1}))))
+  (testing "Generation of an update query."
+    (is (= "UPDATE Table SET one='1',two='2';"
+           (gen/update-query "Table" {:one 1 :two 2})))
+    (is (= "UPDATE Table SET one='1',two='2' WHERE three='3';"
+           (gen/update-query "Table" {:one 1 :two 2} {:three 3})))
+    (is (= "UPDATE Table SET one='1',two='2' WHERE three='3' AND four='4';"
+           (gen/update-query "Table" {:one 1 :two 2} {:three 3 :four 4}))))
+  (testing "Generation of a delete query."
+    (is (= "DELETE FROM Table WHERE one='1';"
+           (gen/delete-query "Table" {:one 1})))
+    (is (= "DELETE FROM Table WHERE one='1' AND two='2';"
+           (gen/delete-query "Table" {:one 1 :two 2}))))
+  (testing "Generation of a select query."
+    (is (= "SELECT * FROM Table;"
+           (gen/select-query "Table")))
+    (is (= "SELECT * FROM Table WHERE one='1';"
+           (gen/select-query "Table" {:one 1})))
+    (is (= "SELECT * FROM Table WHERE one='1';"
+           (gen/select-query "Table" #{:*} {:one 1})))
+    (is (= "SELECT Name FROM Table WHERE one='1';"
+           (gen/select-query "Table" #{:Name} {:one 1})))
+    (is (= "SELECT Name,Age FROM Table WHERE one='1';"
+           (gen/select-query "Table" #{:Name :Age} {:one 1})))
+    (is (= "SELECT Name,Age FROM Table WHERE one='1' AND two='2';"
+           (gen/select-query "Table" #{:Name :Age} {:one 1 :two 2})))))
 
 ;(deftest query-test
   ;(testing "Connection to psql."
