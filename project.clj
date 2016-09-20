@@ -1,4 +1,4 @@
-(defproject com.skyline/rta-client "0.1.0"
+(defproject com.skyline/rta-client "0.1.1"
   :description "Clojure wrapper around com.skyline.CameraControlServer.Utility.Communications/RTAClient."
   :url "http://gitlab.skylinenet.net/appliance/rta-client"
   :dependencies [[com.log4j/log4j-api-2.0-beta8 "2.0.8"]
