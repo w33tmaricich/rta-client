@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## [Unreleased]
+
+## [0.1.0] - 2016-09-20
 ### Added
 - Documentation.
 - Dependancies.
@@ -11,8 +13,6 @@ All notable changes to this project will be documented in this file. This change
 - Functions to generate sql query strings.
 - Unit tests.
 
-## [0.1.1] - 2016-09-19
-
 ## [template]
 ### Added
 ### Changed
@@ -20,3 +20,4 @@ All notable changes to this project will be documented in this file. This change
 ### Fixed
 -
 [Unreleased]: http://gitlab.skylinenet.net/appliance/rta-client
+[0.1.0]: http://gitlab.skylinenet.net/appliance/rta-client
