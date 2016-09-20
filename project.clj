@@ -1,5 +1,5 @@
-(defproject w33tmaricich/rta-client "0.1.0-SNAPSHOT"
-  :description "This is for postgresql communication and RTA."
+(defproject com.skyline/rta-client "0.1.0"
+  :description "Clojure wrapper around com.skyline.CameraControlServer.Utility.Communications/RTAClient."
   :url "http://gitlab.skylinenet.net/appliance/rta-client"
   :dependencies [[com.log4j/log4j-api-2.0-beta8 "2.0.8"]
                  [com.log4j/log4j-core-2.0-beta8 "2.0.8"]
